@@ -27,12 +27,21 @@ public class BombController : MonoBehaviour
     {
         currentOwner = startingOwner;
         target = null;
+
         isFlying = false;
         isCharging = false;
+        chargeAmount = 0f;
+
+        if (flightRoutine != null)
+        {
+            StopCoroutine(flightRoutine);
+            flightRoutine = null;
+        }
 
         if (currentOwner != null)
         {
-            transform.position = currentOwner.transform.position
+            transform.position =
+                currentOwner.transform.position
                 + Vector3.up * heightOffset;
         }
     }
@@ -49,6 +58,7 @@ public class BombController : MonoBehaviour
         }
 
         target = newTarget;
+
         Debug.Log("´øÁú »ó´ë ¼±ÅÃ: " + target.name);
     }
 
@@ -74,7 +84,8 @@ public class BombController : MonoBehaviour
             return 0f;
 
         return Mathf.Clamp01(
-            (Time.time - chargeStartTime) / maxChargeTime);
+            (Time.time - chargeStartTime) / maxChargeTime
+        );
     }
 
     public void ReleaseCharge()
@@ -98,7 +109,8 @@ public class BombController : MonoBehaviour
     {
         if (GameManager.Instance == null ||
             GameManager.Instance.GameEnded ||
-            isFlying || currentOwner == null ||
+            isFlying ||
+            currentOwner == null ||
             !GameManager.Instance.IsAlive(currentOwner) ||
             !GameManager.Instance.IsAlive(newTarget) ||
             newTarget == currentOwner)
@@ -118,6 +130,14 @@ public class BombController : MonoBehaviour
     {
         while (isFlying && target != null)
         {
+            if (GameManager.Instance == null ||
+                GameManager.Instance.GameEnded)
+            {
+                isFlying = false;
+                flightRoutine = null;
+                yield break;
+            }
+
             Vector3 destination =
                 target.transform.position
                 + Vector3.up * heightOffset;
@@ -128,7 +148,8 @@ public class BombController : MonoBehaviour
             transform.position = Vector3.MoveTowards(
                 transform.position,
                 destination,
-                speed * Time.deltaTime);
+                speed * Time.deltaTime
+            );
 
             if (Vector3.Distance(
                 transform.position, destination) < 0.05f)
@@ -137,6 +158,7 @@ public class BombController : MonoBehaviour
 
                 currentOwner = target;
                 target = null;
+
                 isFlying = false;
                 flightRoutine = null;
 
@@ -147,6 +169,7 @@ public class BombController : MonoBehaviour
             yield return null;
         }
 
+        isFlying = false;
         flightRoutine = null;
     }
 
@@ -163,13 +186,17 @@ public class BombController : MonoBehaviour
         GameObject newTarget =
             GameManager.Instance.GetRandomAliveCharacterExcept(
                 currentOwner,
-                GameManager.Instance.player);
+                GameManager.Instance.player
+            );
 
         if (newTarget == null)
             return false;
 
         if (flightRoutine != null)
+        {
             StopCoroutine(flightRoutine);
+            flightRoutine = null;
+        }
 
         target = newTarget;
         isFlying = false;
@@ -177,6 +204,7 @@ public class BombController : MonoBehaviour
         Debug.Log("¹Þ¾ÆÄ¡±â ¼º°ø! ¡æ " + newTarget.name);
 
         ThrowTo(newTarget, 0.25f);
+
         return true;
     }
 
@@ -190,6 +218,7 @@ public class BombController : MonoBehaviour
 
         isFlying = false;
         isCharging = false;
+        target = null;
 
         if (flightRoutine != null)
         {
@@ -197,19 +226,31 @@ public class BombController : MonoBehaviour
             flightRoutine = null;
         }
 
+        // Æø¹ß ½ÃÁ¡ÀÇ ÆøÅº ¼ÒÀ¯ÀÚ ÇÑ ¸í¸¸ Å»¶ô
         GameObject victim = currentOwner;
 
         Debug.Log("ÆøÅº Æø¹ß!");
 
-        if (victim != null)
-            GameManager.Instance.EliminateCharacter(victim);
+        if (victim != null &&
+            GameManager.Instance.IsAlive(victim))
+        {
+            Debug.Log("ÆøÅº ¼ÒÀ¯ÀÚ Å»¶ô: " + victim.name);
 
+            GameManager.Instance.EliminateCharacter(victim);
+        }
+        else
+        {
+            Debug.LogWarning("Æø¹ß ½Ã À¯È¿ÇÑ ÆøÅº ¼ÒÀ¯ÀÚ°¡ ¾ø½À´Ï´Ù.");
+        }
+
+        // ¸¶Áö¸· »ýÁ¸ÀÚ ÆÇÁ¤ÀÌ ³¡³µÀ¸¸é ÆøÅº ºñÈ°¼ºÈ­
         if (GameManager.Instance.GameEnded)
         {
             gameObject.SetActive(false);
             return;
         }
 
+        // Å»¶ôÇÏÁö ¾ÊÀº »ýÁ¸ÀÚ Áß ´ÙÀ½ ¼ÒÀ¯ÀÚ ¼±ÅÃ
         GameObject nextOwner =
             GameManager.Instance.GetRandomAliveCharacterExcept();
 
@@ -218,8 +259,11 @@ public class BombController : MonoBehaviour
             currentOwner = nextOwner;
             target = null;
 
-            transform.position = currentOwner.transform.position
+            transform.position =
+                currentOwner.transform.position
                 + Vector3.up * heightOffset;
+
+            Debug.Log("»õ·Î¿î ÆøÅº ¼ÒÀ¯ÀÚ: " + currentOwner.name);
         }
         else
         {

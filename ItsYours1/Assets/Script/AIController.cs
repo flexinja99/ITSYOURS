@@ -8,13 +8,12 @@ public class AIController : MonoBehaviour
 
     private BombController bombController;
     private float nextActionTime;
+    private bool wasOwner;
 
     private void Start()
     {
         bombController =
             FindFirstObjectByType<BombController>();
-
-        ScheduleNextAction();
     }
 
     private void Update()
@@ -23,33 +22,33 @@ public class AIController : MonoBehaviour
             GameManager.Instance.GameEnded ||
             bombController == null ||
             !GameManager.Instance.IsAlive(gameObject))
+            return;
+
+        bool isOwner =
+            bombController.CurrentOwner == gameObject;
+
+        if (!isOwner)
         {
+            wasOwner = false;
             return;
         }
 
-        if (bombController.CurrentOwner != gameObject ||
-            bombController.IsFlying ||
-            Time.time < nextActionTime)
+        if (!wasOwner)
         {
-            return;
+            wasOwner = true;
+            nextActionTime = Time.time +
+                Random.Range(minWaitTime, maxWaitTime);
         }
+
+        if (bombController.IsFlying ||
+            Time.time < nextActionTime)
+            return;
 
         GameObject target =
             GameManager.Instance.GetRandomAliveCharacterExcept(
                 gameObject);
 
-        if (target == null)
-            return;
-
-        float charge = Random.Range(0.1f, 0.8f);
-
-        bombController.ThrowTo(target, charge);
-        ScheduleNextAction();
-    }
-
-    private void ScheduleNextAction()
-    {
-        nextActionTime = Time.time +
-            Random.Range(minWaitTime, maxWaitTime);
+        if (target != null)
+            bombController.ThrowTo(target, Random.Range(0.1f, 0.8f));
     }
 }

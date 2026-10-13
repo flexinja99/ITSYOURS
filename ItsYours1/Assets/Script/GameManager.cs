@@ -2,6 +2,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 public class GameManager : MonoBehaviour
 {
@@ -24,11 +25,11 @@ public class GameManager : MonoBehaviour
     private float remainingTime;
     private bool gameEnded;
 
-    public float RemainingTime => remainingTime;
-    public bool GameEnded => gameEnded;
-
     private GameObject[] allCharacters;
     private bool[] eliminated;
+
+    public float RemainingTime => remainingTime;
+    public bool GameEnded => gameEnded;
 
     private void Awake()
     {
@@ -37,44 +38,69 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        if (player == null || bomb == null ||
-            aiPlayers == null || aiPlayers.Length != 3)
+        if (player == null ||
+            bomb == null ||
+            aiPlayers == null ||
+            aiPlayers.Length != 3)
         {
             Debug.LogError(
-                "GameManager: Player, Bomb, AI 3명을 연결하세요.");
+                "GameManager: Player, Bomb, AI 3명을 연결하세요."
+            );
+
             enabled = false;
             return;
+        }
+
+        for (int i = 0; i < aiPlayers.Length; i++)
+        {
+            if (aiPlayers[i] == null)
+            {
+                Debug.LogError(
+                    "GameManager: AI 슬롯 " + i + "이 비어 있습니다."
+                );
+
+                enabled = false;
+                return;
+            }
         }
 
         allCharacters = new GameObject[4];
         allCharacters[0] = player;
 
         for (int i = 0; i < aiPlayers.Length; i++)
+        {
             allCharacters[i + 1] = aiPlayers[i];
+        }
 
         eliminated = new bool[allCharacters.Length];
 
+        gameEnded = false;
+
         if (resultPanel != null)
             resultPanel.SetActive(false);
-
-        remainingTime = Random.Range(
-            minExplosionTime, maxExplosionTime);
 
         BombController bombController =
             bomb.GetComponent<BombController>();
 
         if (bombController == null)
         {
-            Debug.LogError("Bomb에 BombController가 없습니다.");
+            Debug.LogError(
+                "Bomb에 BombController가 없습니다."
+            );
+
             enabled = false;
             return;
         }
 
+        bomb.SetActive(true);
+
         bombController.Initialize(player);
 
+        ResetExplosionTimer();
         UpdateSurvivorUI();
 
         Debug.Log("이거 네 거야! 게임 시작!");
+        Debug.Log("초기 폭발 타이머: " + remainingTime + "초");
     }
 
     private void Update()
@@ -84,22 +110,51 @@ public class GameManager : MonoBehaviour
 
         remainingTime -= Time.deltaTime;
 
-        if (remainingTime <= 0f)
+        if (remainingTime > 0f)
+            return;
+
+        // 같은 프레임에 폭발 처리가 반복되지 않도록
+        // 먼저 타이머를 정지 상태로 만든다.
+        remainingTime = float.MaxValue;
+
+        BombController bombController =
+            bomb.GetComponent<BombController>();
+
+        if (bombController == null)
         {
-            remainingTime = 0f;
-
-            BombController bombController =
-                bomb.GetComponent<BombController>();
-
-            if (bombController != null)
-                bombController.Explode();
+            Debug.LogError("BombController를 찾을 수 없습니다.");
+            return;
         }
+
+        bombController.Explode();
+
+        // 게임이 끝나지 않았을 때만 다음 타이머 설정
+        if (!gameEnded)
+        {
+            ResetExplosionTimer();
+
+            Debug.Log(
+                "다음 폭발 타이머: " + remainingTime + "초"
+            );
+        }
+    }
+
+    private void ResetExplosionTimer()
+    {
+        float minTime = Mathf.Max(0f, minExplosionTime);
+        float maxTime = Mathf.Max(minTime, maxExplosionTime);
+
+        remainingTime = Random.Range(minTime, maxTime);
     }
 
     public bool IsAlive(GameObject character)
     {
-        if (character == null || allCharacters == null)
+        if (character == null ||
+            allCharacters == null ||
+            eliminated == null)
+        {
             return false;
+        }
 
         for (int i = 0; i < allCharacters.Length; i++)
         {
@@ -113,8 +168,8 @@ public class GameManager : MonoBehaviour
     public GameObject GetRandomAliveCharacterExcept(
         params GameObject[] excluded)
     {
-        System.Collections.Generic.List<GameObject> candidates =
-            new System.Collections.Generic.List<GameObject>();
+        List<GameObject> candidates =
+            new List<GameObject>();
 
         foreach (GameObject character in allCharacters)
         {
@@ -155,8 +210,11 @@ public class GameManager : MonoBehaviour
             if (allCharacters[i] != character)
                 continue;
 
+            // 이미 탈락 처리된 캐릭터는 다시 처리하지 않는다.
             eliminated[i] = true;
+
             character.SetActive(false);
+
             Debug.Log(character.name + " 탈락!");
 
             break;
@@ -168,8 +226,11 @@ public class GameManager : MonoBehaviour
 
     private void UpdateSurvivorUI()
     {
-        if (survivorText == null || allCharacters == null)
+        if (survivorText == null ||
+            allCharacters == null)
+        {
             return;
+        }
 
         int count = 0;
 
@@ -196,30 +257,39 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (count <= 1)
+        if (count > 1)
+            return;
+
+        gameEnded = true;
+
+        string message;
+
+        if (lastAlive == null)
         {
-            gameEnded = true;
-
-            string message = lastAlive == player
-                ? "승리!"
-                : "패배!";
-
-            if (lastAlive == null)
-                message = "무승부!";
-
-            Debug.Log(message);
-
-            if (resultPanel != null)
-                resultPanel.SetActive(true);
-
-            if (resultText != null)
-                resultText.text = message;
+            message = "무승부!";
         }
+        else if (lastAlive == player)
+        {
+            message = "승리!";
+        }
+        else
+        {
+            message = "패배!";
+        }
+
+        Debug.Log(message);
+
+        if (resultPanel != null)
+            resultPanel.SetActive(true);
+
+        if (resultText != null)
+            resultText.text = message;
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(
-            SceneManager.GetActiveScene().buildIndex);
+            SceneManager.GetActiveScene().buildIndex
+        );
     }
 }
