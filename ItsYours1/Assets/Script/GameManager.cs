@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
     public GameObject resultPanel;
     public TMP_Text resultText;
 
+    [Header("Victory / Defeat UI")]
+    public GameObject victoryPanel;
+    public GameObject defeatPanel;
+
     private float remainingTime;
     private bool gameEnded;
 
@@ -38,6 +42,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        // 게임 재시작 시 시간 정상화
+        Time.timeScale = 1f;
+
         if (player == null ||
             bomb == null ||
             aiPlayers == null ||
@@ -76,8 +83,15 @@ public class GameManager : MonoBehaviour
 
         gameEnded = false;
 
+        // 게임 시작 시 모든 결과 화면 숨기기
         if (resultPanel != null)
             resultPanel.SetActive(false);
+
+        if (victoryPanel != null)
+            victoryPanel.SetActive(false);
+
+        if (defeatPanel != null)
+            defeatPanel.SetActive(false);
 
         BombController bombController =
             bomb.GetComponent<BombController>();
@@ -113,8 +127,7 @@ public class GameManager : MonoBehaviour
         if (remainingTime > 0f)
             return;
 
-        // 같은 프레임에 폭발 처리가 반복되지 않도록
-        // 먼저 타이머를 정지 상태로 만든다.
+        // 중복 폭발 방지
         remainingTime = float.MaxValue;
 
         BombController bombController =
@@ -122,13 +135,15 @@ public class GameManager : MonoBehaviour
 
         if (bombController == null)
         {
-            Debug.LogError("BombController를 찾을 수 없습니다.");
+            Debug.LogError(
+                "BombController를 찾을 수 없습니다."
+            );
             return;
         }
 
         bombController.Explode();
 
-        // 게임이 끝나지 않았을 때만 다음 타이머 설정
+        // 게임이 종료되지 않았다면 다음 폭발 준비
         if (!gameEnded)
         {
             ResetExplosionTimer();
@@ -171,6 +186,9 @@ public class GameManager : MonoBehaviour
         List<GameObject> candidates =
             new List<GameObject>();
 
+        if (allCharacters == null)
+            return null;
+
         foreach (GameObject character in allCharacters)
         {
             if (!IsAlive(character))
@@ -197,9 +215,12 @@ public class GameManager : MonoBehaviour
         if (candidates.Count == 0)
             return null;
 
-        return candidates[Random.Range(0, candidates.Count)];
+        return candidates[
+            Random.Range(0, candidates.Count)
+        ];
     }
 
+    // 폭탄에 맞아 탈락한 캐릭터 처리
     public void EliminateCharacter(GameObject character)
     {
         if (gameEnded || !IsAlive(character))
@@ -210,7 +231,6 @@ public class GameManager : MonoBehaviour
             if (allCharacters[i] != character)
                 continue;
 
-            // 이미 탈락 처리된 캐릭터는 다시 처리하지 않는다.
             eliminated[i] = true;
 
             character.SetActive(false);
@@ -221,6 +241,15 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateSurvivorUI();
+
+        // 플레이어가 죽으면 즉시 패배!
+        if (character == player)
+        {
+            EndGame(false);
+            return;
+        }
+
+        // AI가 죽었다면 승리 조건 확인
         CheckWinner();
     }
 
@@ -243,8 +272,12 @@ public class GameManager : MonoBehaviour
         survivorText.text = "생존 " + count + "명";
     }
 
+    // 최후의 생존자 판정
     private void CheckWinner()
     {
+        if (gameEnded)
+            return;
+
         GameObject lastAlive = null;
         int count = 0;
 
@@ -257,39 +290,73 @@ public class GameManager : MonoBehaviour
             }
         }
 
+        // 생존자가 2명 이상이면 계속 진행
         if (count > 1)
+            return;
+
+        // 플레이어 혼자 살아남았다면 승리
+        if (count == 1 && lastAlive == player)
+        {
+            EndGame(true);
+        }
+        else
+        {
+            EndGame(false);
+        }
+    }
+
+    // 게임 종료 및 승리 / 패배 화면
+    private void EndGame(bool victory)
+    {
+        if (gameEnded)
             return;
 
         gameEnded = true;
 
-        string message;
-
-        if (lastAlive == null)
-        {
-            message = "무승부!";
-        }
-        else if (lastAlive == player)
-        {
-            message = "승리!";
-        }
-        else
-        {
-            message = "패배!";
-        }
+        string message = victory ? "승리!" : "패배!";
 
         Debug.Log(message);
 
+        // 기존 결과창 숨기기
         if (resultPanel != null)
-            resultPanel.SetActive(true);
+            resultPanel.SetActive(false);
 
-        if (resultText != null)
-            resultText.text = message;
+        // 별도의 승리 / 패배 화면 출력
+        if (victoryPanel != null || defeatPanel != null)
+        {
+            if (victoryPanel != null)
+                victoryPanel.SetActive(victory);
+
+            if (defeatPanel != null)
+                defeatPanel.SetActive(!victory);
+        }
+        else
+        {
+            // 새 패널이 아직 없다면 기존 UI 사용
+            if (resultPanel != null)
+                resultPanel.SetActive(true);
+
+            if (resultText != null)
+                resultText.text = message;
+        }
+
+        // 게임 시간 정지
+        Time.timeScale = 0f;
     }
 
+    // 다시 시작 버튼
     public void RestartGame()
     {
+        Time.timeScale = 1f;
+
         SceneManager.LoadScene(
             SceneManager.GetActiveScene().buildIndex
         );
+    }
+
+    private void OnDestroy()
+    {
+        if (Instance == this)
+            Instance = null;
     }
 }

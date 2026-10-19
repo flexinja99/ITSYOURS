@@ -1,0 +1,1313 @@
+fileFormatVersion: 2
+guid: 85628499f80842248b6d557bc40c8840
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5361028193592479107
+    second: smreo3_0
+  - first:
+      213: 3836385764955319751
+    second: smreo3_1
+  - first:
+      213: 7433034109932308958
+    second: smreo3_2
+  - first:
+      213: 1846127931470169286
+    second: smreo3_3
+  - first:
+      213: 376498072446752058
+    second: smreo3_4
+  - first:
+      213: 7617364980308419963
+    second: smreo3_5
+  - first:
+      213: -703814440761964607
+    second: smreo3_6
+  - first:
+      213: 2641537744044257413
+    second: smreo3_7
+  - first:
+      213: 2325079056012685336
+    second: smreo3_8
+  - first:
+      213: 2588426466859217006
+    second: smreo3_9
+  - first:
+      213: 4019498016681369756
+    second: smreo3_10
+  - first:
+      213: 2138653625902036806
+    second: smreo3_11
+  - first:
+      213: 7304615530328402147
+    second: smreo3_12
+  - first:
+      213: 2134237162973646501
+    second: smreo3_13
+  - first:
+      213: -2605677138980149264
+    second: smreo3_14
+  - first:
+      213: -3769328557425416709
+    second: smreo3_15
+  - first:
+      213: -5229619226407644451
+    second: smreo3_16
+  - first:
+      213: 8052634280636001172
+    second: smreo3_17
+  - first:
+      213: 1648663076437997304
+    second: smreo3_18
+  - first:
+      213: -6594817764304902695
+    second: smreo3_19
+  - first:
+      213: -5307839404708549041
+    second: smreo3_20
+  - first:
+      213: -5025622843090946449
+    second: smreo3_21
+  - first:
+      213: -2759708207512177907
+    second: smreo3_22
+  - first:
+      213: 8460772424924960232
+    second: smreo3_23
+  - first:
+      213: 7317949990769995659
+    second: smreo3_24
+  - first:
+      213: 4426158032765103651
+    second: smreo3_25
+  - first:
+      213: -2296992923007874600
+    second: smreo3_26
+  - first:
+      213: 6787172161880180656
+    second: smreo3_27
+  - first:
+      213: 816999122780193190
+    second: smreo3_28
+  - first:
+      213: 5855224726585977064
+    second: smreo3_29
+  - first:
+      213: 4839911083251964111
+    second: smreo3_30
+  - first:
+      213: -8621728913831525198
+    second: smreo3_31
+  - first:
+      213: -4394869899253323390
+    second: smreo3_32
+  - first:
+      213: 9109040464630027169
+    second: smreo3_33
+  - first:
+      213: -7226065050753659409
+    second: smreo3_34
+  - first:
+      213: -6754779505596818980
+    second: smreo3_35
+  - first:
+      213: 2903255852312305597
+    second: smreo3_36
+  - first:
+      213: -1075605584928338378
+    second: smreo3_37
+  - first:
+      213: 7493061057087536047
+    second: smreo3_38
+  - first:
+      213: -926410372270788928
+    second: smreo3_39
+  - first:
+      213: -7522113472822181620
+    second: smreo3_40
+  - first:
+      213: 1291954807488697062
+    second: smreo3_41
+  - first:
+      213: 2636552113980916890
+    second: smreo3_42
+  - first:
+      213: -6022159104918905840
+    second: smreo3_43
+  - first:
+      213: 4047106795875282142
+    second: smreo3_44
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 4
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: smreo3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 771
+        width: 138
+        height: 462
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d72f01a034dc995b0800000000000000
+      internalID: -5361028193592479107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_1
+      rect:
+        serializedVersion: 2
+        x: 283
+        y: 1185
+        width: 68
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7cde685f6849d3530800000000000000
+      internalID: 3836385764955319751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_2
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 1221
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed980ed1421772760800000000000000
+      internalID: 7433034109932308958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_3
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 1189
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c4c43d8293ce9910800000000000000
+      internalID: 1846127931470169286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_4
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 1219
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a35deca8007993500800000000000000
+      internalID: 376498072446752058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_5
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 1197
+        width: 23
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b75a8cf471156b960800000000000000
+      internalID: 7617364980308419963
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_6
+      rect:
+        serializedVersion: 2
+        x: 959
+        y: 1195
+        width: 111
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c7c79ebe7c8b36f0800000000000000
+      internalID: -703814440761964607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_7
+      rect:
+        serializedVersion: 2
+        x: 1111
+        y: 1173
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5807b8e2590a8a420800000000000000
+      internalID: 2641537744044257413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_8
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 1012
+        width: 18
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81036582517544020800000000000000
+      internalID: 2325079056012685336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_9
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 0
+        width: 942
+        height: 1184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e60fc545820fbe320800000000000000
+      internalID: 2588426466859217006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_10
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 1126
+        width: 10
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c902ea3662028c730800000000000000
+      internalID: 4019498016681369756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_11
+      rect:
+        serializedVersion: 2
+        x: 1101
+        y: 941
+        width: 134
+        height: 199
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 647fd7544260ead10800000000000000
+      internalID: 2138653625902036806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_12
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 945
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e8a6029f153f5560800000000000000
+      internalID: 7304615530328402147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_13
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 939
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ae4b7d54655e9d10800000000000000
+      internalID: 2134237162973646501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_14
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 925
+        width: 12
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f76bb39276c6dbd0800000000000000
+      internalID: -2605677138980149264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 604
+        width: 79
+        height: 112
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bf52ce4d5a7a0bbc0800000000000000
+      internalID: -3769328557425416709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 451
+        width: 41
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd25b637509ac67b0800000000000000
+      internalID: -5229619226407644451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_17
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 570
+        width: 28
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49b217ba634b0cf60800000000000000
+      internalID: 8052634280636001172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_18
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 592
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8f6b361455a31e610800000000000000
+      internalID: 1648663076437997304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_19
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 616
+        width: 54
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d5ab282f208a74a0800000000000000
+      internalID: -6594817764304902695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_20
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 609
+        width: 8
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4ea68dfe24c656b0800000000000000
+      internalID: -5307839404708549041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_21
+      rect:
+        serializedVersion: 2
+        x: 1133
+        y: 596
+        width: 108
+        height: 322
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f66b97ea6a6614ab0800000000000000
+      internalID: -5025622843090946449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_22
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 561
+        width: 10
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d03b18fb10c83b9d0800000000000000
+      internalID: -2759708207512177907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_23
+      rect:
+        serializedVersion: 2
+        x: 1125
+        y: 542
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e5921181b3ba6570800000000000000
+      internalID: 8460772424924960232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_24
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 498
+        width: 20
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b8f2be39eb49e8560800000000000000
+      internalID: 7317949990769995659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_25
+      rect:
+        serializedVersion: 2
+        x: 1127
+        y: 477
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32ea4bea74fdc6d30800000000000000
+      internalID: 4426158032765103651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_26
+      rect:
+        serializedVersion: 2
+        x: 1136
+        y: 471
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8d987844b117f10e0800000000000000
+      internalID: -2296992923007874600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_27
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 420
+        width: 20
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b7c94a0f11e03e50800000000000000
+      internalID: 6787172161880180656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_28
+      rect:
+        serializedVersion: 2
+        x: 1155
+        y: 296
+        width: 92
+        height: 98
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6a18e1f9f50965b00800000000000000
+      internalID: 816999122780193190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_29
+      rect:
+        serializedVersion: 2
+        x: 1157
+        y: 389
+        width: 12
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8e8ad34dddfe14150800000000000000
+      internalID: 5855224726585977064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_30
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 373
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc895bdbc71da2340800000000000000
+      internalID: 4839911083251964111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_31
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 248
+        width: 53
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b48b559b37795880800000000000000
+      internalID: -8621728913831525198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_32
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 320
+        width: 9
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 289e2f49c194203c0800000000000000
+      internalID: -4394869899253323390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 100
+        height: 49
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a39ee27a00d96e70800000000000000
+      internalID: 9109040464630027169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_34
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 43
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fed86f52f1cd7bb90800000000000000
+      internalID: -7226065050753659409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_35
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 71
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cd910d8f3d33242a0800000000000000
+      internalID: -6754779505596818980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_36
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 156
+        width: 37
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dbf1629c0df6a4820800000000000000
+      internalID: 2903255852312305597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_37
+      rect:
+        serializedVersion: 2
+        x: 736
+        y: 38
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63e8be75b6ea211f0800000000000000
+      internalID: -1075605584928338378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_38
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 31
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fabf30cd453bcf760800000000000000
+      internalID: 7493061057087536047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_39
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 100
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ceef8cbcaab423f0800000000000000
+      internalID: -926410372270788928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_40
+      rect:
+        serializedVersion: 2
+        x: 955
+        y: 106
+        width: 11
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c01014c76a51c9790800000000000000
+      internalID: -7522113472822181620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_41
+      rect:
+        serializedVersion: 2
+        x: 1045
+        y: 238
+        width: 39
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e2d8366d02fde110800000000000000
+      internalID: 1291954807488697062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_42
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 184
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a9443a9bd2ae69420800000000000000
+      internalID: 2636552113980916890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_43
+      rect:
+        serializedVersion: 2
+        x: 1067
+        y: 218
+        width: 13
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01c9c6a633efc6ca0800000000000000
+      internalID: -6022159104918905840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: smreo3_44
+      rect:
+        serializedVersion: 2
+        x: 1085
+        y: 0
+        width: 142
+        height: 316
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edc273830363a2830800000000000000
+      internalID: 4047106795875282142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      smreo3_0: -5361028193592479107
+      smreo3_1: 3836385764955319751
+      smreo3_10: 4019498016681369756
+      smreo3_11: 2138653625902036806
+      smreo3_12: 7304615530328402147
+      smreo3_13: 2134237162973646501
+      smreo3_14: -2605677138980149264
+      smreo3_15: -3769328557425416709
+      smreo3_16: -5229619226407644451
+      smreo3_17: 8052634280636001172
+      smreo3_18: 1648663076437997304
+      smreo3_19: -6594817764304902695
+      smreo3_2: 7433034109932308958
+      smreo3_20: -5307839404708549041
+      smreo3_21: -5025622843090946449
+      smreo3_22: -2759708207512177907
+      smreo3_23: 8460772424924960232
+      smreo3_24: 7317949990769995659
+      smreo3_25: 4426158032765103651
+      smreo3_26: -2296992923007874600
+      smreo3_27: 6787172161880180656
+      smreo3_28: 816999122780193190
+      smreo3_29: 5855224726585977064
+      smreo3_3: 1846127931470169286
+      smreo3_30: 4839911083251964111
+      smreo3_31: -8621728913831525198
+      smreo3_32: -4394869899253323390
+      smreo3_33: 9109040464630027169
+      smreo3_34: -7226065050753659409
+      smreo3_35: -6754779505596818980
+      smreo3_36: 2903255852312305597
+      smreo3_37: -1075605584928338378
+      smreo3_38: 7493061057087536047
+      smreo3_39: -926410372270788928
+      smreo3_4: 376498072446752058
+      smreo3_40: -7522113472822181620
+      smreo3_41: 1291954807488697062
+      smreo3_42: 2636552113980916890
+      smreo3_43: -6022159104918905840
+      smreo3_44: 4047106795875282142
+      smreo3_5: 7617364980308419963
+      smreo3_6: -703814440761964607
+      smreo3_7: 2641537744044257413
+      smreo3_8: 2325079056012685336
+      smreo3_9: 2588426466859217006
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
