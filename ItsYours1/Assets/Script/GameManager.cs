@@ -1,4 +1,5 @@
 
+
 using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,10 @@ public class GameManager : MonoBehaviour
     public GameObject defeatPanel;
 
     private float remainingTime;
+
+    // NEW: 현재 폭탄 타이머의 전체 시간
+    private float explosionDuration;
+
     private bool gameEnded;
 
     private GameObject[] allCharacters;
@@ -35,6 +40,20 @@ public class GameManager : MonoBehaviour
     public float RemainingTime => remainingTime;
     public bool GameEnded => gameEnded;
 
+    // NEW: 폭탄 타이머 게이지 (1 = 가득 참, 0 = 폭발)
+    public float ExplosionProgress
+    {
+        get
+        {
+            if (gameEnded || explosionDuration <= 0f)
+                return 0f;
+
+            return Mathf.Clamp01(
+                remainingTime / explosionDuration
+            );
+        }
+    }
+
     private void Awake()
     {
         Instance = this;
@@ -42,7 +61,6 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        // 게임 재시작 시 시간 정상화
         Time.timeScale = 1f;
 
         if (player == null ||
@@ -83,7 +101,6 @@ public class GameManager : MonoBehaviour
 
         gameEnded = false;
 
-        // 게임 시작 시 모든 결과 화면 숨기기
         if (resultPanel != null)
             resultPanel.SetActive(false);
 
@@ -114,7 +131,9 @@ public class GameManager : MonoBehaviour
         UpdateSurvivorUI();
 
         Debug.Log("이거 네 거야! 게임 시작!");
-        Debug.Log("초기 폭발 타이머: " + remainingTime + "초");
+        Debug.Log(
+            "초기 폭발 타이머: " + remainingTime + "초"
+        );
     }
 
     private void Update()
@@ -127,7 +146,7 @@ public class GameManager : MonoBehaviour
         if (remainingTime > 0f)
             return;
 
-        // 중복 폭발 방지
+        // 폭발 중복 실행 방지
         remainingTime = float.MaxValue;
 
         BombController bombController =
@@ -143,7 +162,7 @@ public class GameManager : MonoBehaviour
 
         bombController.Explode();
 
-        // 게임이 종료되지 않았다면 다음 폭발 준비
+        // 게임이 계속되면 타이머 초기화
         if (!gameEnded)
         {
             ResetExplosionTimer();
@@ -154,12 +173,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // NEW: 전체 시간과 남은 시간을 함께 설정
     private void ResetExplosionTimer()
     {
-        float minTime = Mathf.Max(0f, minExplosionTime);
-        float maxTime = Mathf.Max(minTime, maxExplosionTime);
+        float minTime = Mathf.Max(
+            0.01f,
+            minExplosionTime
+        );
 
-        remainingTime = Random.Range(minTime, maxTime);
+        float maxTime = Mathf.Max(
+            minTime,
+            maxExplosionTime
+        );
+
+        explosionDuration = Random.Range(
+            minTime,
+            maxTime
+        );
+
+        remainingTime = explosionDuration;
     }
 
     public bool IsAlive(GameObject character)
@@ -220,7 +252,6 @@ public class GameManager : MonoBehaviour
         ];
     }
 
-    // 폭탄에 맞아 탈락한 캐릭터 처리
     public void EliminateCharacter(GameObject character)
     {
         if (gameEnded || !IsAlive(character))
@@ -235,21 +266,23 @@ public class GameManager : MonoBehaviour
 
             character.SetActive(false);
 
-            Debug.Log(character.name + " 탈락!");
+            Debug.Log(
+                character.name + " 탈락!"
+            );
 
             break;
         }
 
         UpdateSurvivorUI();
 
-        // 플레이어가 죽으면 즉시 패배!
+        // 플레이어가 탈락하면 즉시 패배
         if (character == player)
         {
             EndGame(false);
             return;
         }
 
-        // AI가 죽었다면 승리 조건 확인
+        // AI 탈락 시 승리 조건 확인
         CheckWinner();
     }
 
@@ -272,7 +305,6 @@ public class GameManager : MonoBehaviour
         survivorText.text = "생존 " + count + "명";
     }
 
-    // 최후의 생존자 판정
     private void CheckWinner()
     {
         if (gameEnded)
@@ -290,11 +322,9 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        // 생존자가 2명 이상이면 계속 진행
         if (count > 1)
             return;
 
-        // 플레이어 혼자 살아남았다면 승리
         if (count == 1 && lastAlive == player)
         {
             EndGame(true);
@@ -305,7 +335,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // 게임 종료 및 승리 / 패배 화면
     private void EndGame(bool victory)
     {
         if (gameEnded)
@@ -317,11 +346,9 @@ public class GameManager : MonoBehaviour
 
         Debug.Log(message);
 
-        // 기존 결과창 숨기기
         if (resultPanel != null)
             resultPanel.SetActive(false);
 
-        // 별도의 승리 / 패배 화면 출력
         if (victoryPanel != null || defeatPanel != null)
         {
             if (victoryPanel != null)
@@ -332,7 +359,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            // 새 패널이 아직 없다면 기존 UI 사용
             if (resultPanel != null)
                 resultPanel.SetActive(true);
 
@@ -340,11 +366,9 @@ public class GameManager : MonoBehaviour
                 resultText.text = message;
         }
 
-        // 게임 시간 정지
         Time.timeScale = 0f;
     }
 
-    // 다시 시작 버튼
     public void RestartGame()
     {
         Time.timeScale = 1f;

@@ -36,9 +36,11 @@ public class CharacterSelect : MonoBehaviour
         if (bombController.Target != gameObject)
             return;
 
+        // 이전 선택된 캐릭터 색상 복구
         if (selectedCharacter != null)
             selectedCharacter.SetSelected(false);
 
+        // 새로운 캐릭터 선택
         selectedCharacter = this;
         SetSelected(true);
     }
@@ -53,9 +55,23 @@ public class CharacterSelect : MonoBehaviour
             : originalColor;
     }
 
+    // NEW: 선택된 캐릭터를 원래 색으로 복구
+    public static void ClearSelection()
+    {
+        if (selectedCharacter != null)
+        {
+            selectedCharacter.SetSelected(false);
+        }
+
+        selectedCharacter = null;
+    }
+
     private void OnDisable()
     {
         if (selectedCharacter == this)
+        {
+            SetSelected(false);
             selectedCharacter = null;
+        }
     }
 }
