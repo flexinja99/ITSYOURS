@@ -294,6 +294,13 @@ public class BombController : MonoBehaviour
 
         Debug.Log("ÆøÅº Æø¹ß!");
 
+
+        if (GameAudioManager.Instance != null)
+        {
+            GameAudioManager.Instance.PlayExplosion();
+        }
+
+
         if (victim != null &&
             GameManager.Instance.IsAlive(victim))
         {
