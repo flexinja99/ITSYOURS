@@ -4,104 +4,110 @@ using UnityEngine.UI;
 
 public class BombTimerBar : MonoBehaviour
 {
-    [Header("Timer UI")]
+    [Header("UI References")]
+    public Canvas mainCanvas;
     public Image timerFill;
 
     [Header("Follow Settings")]
     public float heightOffset = 0.7f;
 
+    [Header("Timer Size")]
+    public float barWidth = 70f;
+    public float barHeight = 14f;
+    public float fillWidth = 62f;
+    public float fillHeight = 8f;
+
     [Header("Colors")]
-    public Color safeColor = new Color(0.2f, 0.8f, 0.4f);
-    public Color warningColor = new Color(1f, 0.7f, 0.2f);
-    public Color dangerColor = new Color(1f, 0.2f, 0.2f);
+    public Color safeColor =
+        new Color(0.2f, 0.8f, 0.4f);
+
+    public Color warningColor =
+        new Color(1f, 0.7f, 0.2f);
+
+    public Color dangerColor =
+        new Color(1f, 0.2f, 0.2f);
 
     private Transform bombTarget;
     private RectTransform barRect;
+    private RectTransform fillRect;
     private RectTransform canvasRect;
 
-    private Canvas mainCanvas;
-    private Camera gameCamera;
     private CanvasGroup canvasGroup;
+    private Camera gameCamera;
 
     private void Start()
     {
         barRect = GetComponent<RectTransform>();
-        gameCamera = Camera.main;
 
-        if (GameManager.Instance == null ||
-            GameManager.Instance.bomb == null)
-        {
-            Debug.LogError("BombTimerBar: Bomb를 찾을 수 없습니다.");
-            enabled = false;
-            return;
-        }
-
-        bombTarget = GameManager.Instance.bomb.transform;
-
-        // Screen Space Canvas 자동 검색
-        Canvas[] canvases =
-            FindObjectsByType<Canvas>(FindObjectsSortMode.None);
-
-        foreach (Canvas canvas in canvases)
-        {
-            if (canvas.renderMode != RenderMode.WorldSpace &&
-                canvas.isRootCanvas)
-            {
-                mainCanvas = canvas;
-                break;
-            }
-        }
-
-        if (mainCanvas == null)
+        if (barRect == null ||
+            mainCanvas == null ||
+            timerFill == null)
         {
             Debug.LogError(
-                "BombTimerBar: Screen Space Canvas가 없습니다."
+                "BombTimerBar: Main Canvas 또는 Timer Fill 연결 확인!"
             );
 
             enabled = false;
             return;
         }
 
-        // 기존 World Space UI를 일반 Canvas로 자동 이동
+        mainCanvas = mainCanvas.rootCanvas;
+
+        if (mainCanvas.renderMode == RenderMode.WorldSpace)
+        {
+            Debug.LogError(
+                "BombTimerBar: Screen Space Canvas를 연결하세요."
+            );
+
+            enabled = false;
+            return;
+        }
+
+        if (GameManager.Instance == null ||
+            GameManager.Instance.bomb == null)
+        {
+            Debug.LogError(
+                "BombTimerBar: Bomb를 찾을 수 없습니다."
+            );
+
+            enabled = false;
+            return;
+        }
+
+        bombTarget = GameManager.Instance.bomb.transform;
+        gameCamera = Camera.main;
+
+        if (gameCamera == null)
+        {
+            Debug.LogError(
+                "BombTimerBar: Main Camera를 찾을 수 없습니다."
+            );
+
+            enabled = false;
+            return;
+        }
+
+        // 지정한 메인 Canvas 아래로 이동
         barRect.SetParent(mainCanvas.transform, false);
+        barRect.SetAsLastSibling();
 
-        canvasRect = mainCanvas.GetComponent<RectTransform>();
+        canvasRect =
+            mainCanvas.GetComponent<RectTransform>();
 
-        // 타이머 바 크기 및 기준점 자동 설정
-        barRect.anchorMin = new Vector2(0.5f, 0.5f);
-        barRect.anchorMax = new Vector2(0.5f, 0.5f);
-        barRect.pivot = new Vector2(0.5f, 0.5f);
+        fillRect =
+            timerFill.GetComponent<RectTransform>();
 
-        barRect.localScale = Vector3.one;
-        barRect.localRotation = Quaternion.identity;
-        barRect.sizeDelta = new Vector2(140f, 22f);
+        // 게이지 기본 설정
+        timerFill.type = Image.Type.Filled;
+        timerFill.fillMethod =
+            Image.FillMethod.Horizontal;
+        timerFill.fillOrigin = 0;
+        timerFill.raycastTarget = false;
 
-        // 클릭 방지
         Image background = GetComponent<Image>();
 
         if (background != null)
             background.raycastTarget = false;
-
-        if (timerFill != null)
-        {
-            timerFill.type = Image.Type.Filled;
-            timerFill.fillMethod =
-                Image.FillMethod.Horizontal;
-            timerFill.fillOrigin = 0;
-            timerFill.raycastTarget = false;
-
-            RectTransform fillRect =
-                timerFill.GetComponent<RectTransform>();
-
-            fillRect.anchorMin = new Vector2(0.5f, 0.5f);
-            fillRect.anchorMax = new Vector2(0.5f, 0.5f);
-            fillRect.pivot = new Vector2(0.5f, 0.5f);
-
-            fillRect.anchoredPosition = Vector2.zero;
-            fillRect.localScale = Vector3.one;
-            fillRect.localRotation = Quaternion.identity;
-            fillRect.sizeDelta = new Vector2(132f, 14f);
-        }
 
         canvasGroup = GetComponent<CanvasGroup>();
 
@@ -111,7 +117,49 @@ public class BombTimerBar : MonoBehaviour
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
 
-        Debug.Log("BombTimerBar: 폭탄 추적 시작!");
+        ApplyFixedSize();
+
+        Debug.Log("BombTimerBar: 고정 크기 타이머 시작!");
+    }
+
+    // 타이머의 크기와 Scale을 항상 동일하게 설정
+    private void ApplyFixedSize()
+    {
+        if (barRect == null || fillRect == null)
+            return;
+
+        // 바깥 배경
+        barRect.anchorMin =
+            new Vector2(0.5f, 0.5f);
+        barRect.anchorMax =
+            new Vector2(0.5f, 0.5f);
+        barRect.pivot =
+            new Vector2(0.5f, 0.5f);
+
+        barRect.localScale = Vector3.one;
+        barRect.localRotation = Quaternion.identity;
+
+        barRect.sizeDelta = new Vector2(
+            Mathf.Max(1f, barWidth),
+            Mathf.Max(1f, barHeight)
+        );
+
+        // 안쪽 게이지
+        fillRect.anchorMin =
+            new Vector2(0.5f, 0.5f);
+        fillRect.anchorMax =
+            new Vector2(0.5f, 0.5f);
+        fillRect.pivot =
+            new Vector2(0.5f, 0.5f);
+
+        fillRect.anchoredPosition = Vector2.zero;
+        fillRect.localScale = Vector3.one;
+        fillRect.localRotation = Quaternion.identity;
+
+        fillRect.sizeDelta = new Vector2(
+            Mathf.Max(1f, fillWidth),
+            Mathf.Max(1f, fillHeight)
+        );
     }
 
     private void LateUpdate()
@@ -124,23 +172,26 @@ public class BombTimerBar : MonoBehaviour
             return;
         }
 
-        // 게임 종료 시 타이머 숨기기
-        if (GameManager.Instance.GameEnded)
+        // 매 프레임 크기 유지
+        ApplyFixedSize();
+
+        // 게임 종료 시 숨기기
+        if (GameManager.Instance.GameEnded ||
+            !bombTarget.gameObject.activeInHierarchy)
         {
             canvasGroup.alpha = 0f;
             return;
         }
 
-        canvasGroup.alpha = 1f;
-
-        // 폭탄의 월드 위치를 화면 위치로 변환
+        // 폭탄 월드 좌표
         Vector3 worldPosition =
-            bombTarget.position + Vector3.up * heightOffset;
+            bombTarget.position +
+            Vector3.up * heightOffset;
 
+        // 화면 좌표로 변환
         Vector3 screenPosition =
             gameCamera.WorldToScreenPoint(worldPosition);
 
-        // 화면 뒤에 있으면 숨기기
         if (screenPosition.z <= 0f)
         {
             canvasGroup.alpha = 0f;
@@ -160,26 +211,33 @@ public class BombTimerBar : MonoBehaviour
 
         Vector2 localPosition;
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvasRect,
-            screenPosition,
-            uiCamera,
-            out localPosition
-        );
+        bool success =
+            RectTransformUtility
+            .ScreenPointToLocalPointInRectangle(
+                canvasRect,
+                screenPosition,
+                uiCamera,
+                out localPosition
+            );
 
-        // 타이머 바가 폭탄을 따라 이동
+        if (!success)
+        {
+            canvasGroup.alpha = 0f;
+            return;
+        }
+
+        // 폭탄 위치 따라가기
         barRect.anchoredPosition = localPosition;
 
-        if (timerFill == null)
-            return;
+        canvasGroup.alpha = 1f;
 
-        // 폭발까지 남은 비율 표시
+        // 폭발 타이머 비율
         float progress =
             GameManager.Instance.ExplosionProgress;
 
         timerFill.fillAmount = progress;
 
-        // 남은 시간에 따라 색상 변경
+        // 색상 변경
         if (progress > 0.5f)
         {
             timerFill.color = safeColor;
